@@ -3,19 +3,67 @@
 //
 
 #include "Tree.h"
+#include <iostream>
 
-Tree::Tree(int Depth)
+Tree::Tree()
 {
 
 }
 
-void Tree::PrintTree(Node* Root)
+Tree::Tree(Node* Root)
+{
+    this->root = Root;
+}
+
+Node* Tree::CreateNode(int data)
+{
+    Node* NewNode = new Node();
+    NewNode->data = data;
+    NewNode->left = nullptr;
+    NewNode->right = nullptr;
+    return NewNode;
+}
+
+void Tree::PrintInOrder(Node* Root)
 {
     if (!Root) return;
 
-    std::cout << Root->data << std::endl;
-    PrintTree(Root->left);
-    PrintTree(Root->right);
+    // First evaluate the left child.
+    PrintInOrder(Root->left);
+
+    // Then evaluate the current node.
+    std::cout << Root->data << " ";
+
+    // Then evaluate the right child.
+    PrintInOrder(Root->right);
+}
+
+void Tree::PrintPreOrder(Node* Root)
+{
+    if (!Root) return;
+
+    // First evaluate the current node.
+    std::cout << Root->data << " ";
+
+    // Then evaluate the left child.
+    PrintPreOrder(Root->left);
+
+    // Then evaluate the right child.
+    PrintPreOrder(Root->right);
+}
+
+void Tree::PrintPostOrder(Node* Root)
+{
+    if (!Root) return;
+
+    // First evaluate the left child.
+    PrintPostOrder(Root->left);
+
+    // Then evaluate the right child.
+    PrintPostOrder(Root->right);
+
+    // Then evaluate the current node.
+    std::cout << Root->data << " ";
 }
 
 void Tree::bfs(Node* Root)
@@ -65,12 +113,5 @@ void Tree::dfs(Node* Root)
     }
 }
 
-Node* Tree::CreateNode(int data)
-{
-    Node* NewNode = new Node();
-    NewNode->data = data;
-    NewNode->left = nullptr;
-    NewNode->right = nullptr;
-    return NewNode;
-}
+
 

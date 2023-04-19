@@ -9,26 +9,54 @@
 #include <deque>
 
 struct Node {
+
     int data;
     Node* left;
     Node* right;
+
+    Node()
+    {
+
+    }
+
+    Node(int Data)
+    {
+        data = Data;
+        left = nullptr;
+        right = nullptr;
+    }
+
+    Node(int Data, Node* Left, Node* Right)
+    {
+        data = Data;
+        left = Left;
+        right = Right;
+    }
 };
 
 class Tree {
 
 public:
 
-    Tree(int Depth);
+    Tree();
 
-    void PrintTree(Node* Root);
+    Tree(Node* Root);
+
+    Node* CreateNode(int data);
+
+    void PrintInOrder(Node* Root);
+
+    void PrintPreOrder(Node* Root);
+
+    void PrintPostOrder(Node* Root);
 
     void bfs(Node* Root);
 
     void dfs(Node* Root);
 
-private:
+    Node* root;
 
-    Node* CreateNode(int data);
+
 
 };
 

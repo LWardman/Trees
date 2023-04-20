@@ -134,5 +134,26 @@ int Tree::GetMaxDepth(Node* Root) {
     return std::max(leftDepth, rightDepth) + 1;
 }
 
+int Tree::Height(Node* Root, int &Ans)
+{
+if(!Root) return 0;
+
+int LeftHeight = Height(Root->left, Ans);
+int RightHeight = Height(Root->right, Ans);
+
+Ans = std::max(Ans, 1 + LeftHeight + RightHeight);
+return 1 + std::max(LeftHeight, RightHeight);
+
+}
+
+int Tree::DiameterOfTree(Node* Root)
+{
+    if(!Root) return 0;
+
+    int Ans = 0;
+    Height(Root, Ans);
+    return Ans - 1;
+}
+
 
 

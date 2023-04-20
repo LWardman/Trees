@@ -58,6 +58,10 @@ public:
 
     int GetMaxDepth(Node* Root);
 
+    int Height(Node* Root, int &Ans);
+
+    int DiameterOfTree(Node* Root);
+
     Node* root;
 
 

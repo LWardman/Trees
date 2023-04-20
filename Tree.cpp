@@ -5,10 +5,6 @@
 #include "Tree.h"
 #include <iostream>
 
-Tree::Tree()
-{
-
-}
 
 Tree::Tree(Node* Root)
 {
@@ -114,22 +110,22 @@ void Tree::DepthFirstSearch(Node* Root)
 }
 
 Node* Tree::InvertTree(Node* Root) {
-    if (root == nullptr) return root;
+    if (Root == nullptr) return Root;
 
-    Node* placeholder = root->right;
-    root->right = root->left;
-    root->left = placeholder;
-    InvertTree(root->left);
-    InvertTree(root->right);
+    Node* placeholder = Root->right;
+    Root->right = Root->left;
+    Root->left = placeholder;
+    InvertTree(Root->left);
+    InvertTree(Root->right);
 
-    return root;
+    return Root;
 }
 
 int Tree::GetMaxDepth(Node* Root) {
-    if (root == nullptr) return 0;
+    if (Root == nullptr) return 0;
 
-    int leftDepth = GetMaxDepth(root->left);
-    int rightDepth = GetMaxDepth(root->right);
+    int leftDepth = GetMaxDepth(Root->left);
+    int rightDepth = GetMaxDepth(Root->right);
 
     return std::max(leftDepth, rightDepth) + 1;
 }
@@ -153,6 +149,31 @@ int Tree::DiameterOfTree(Node* Root)
     int Ans = 0;
     Height(Root, Ans);
     return Ans - 1;
+}
+
+bool Tree::IdenticalTree(Node* Root, Node* OtherRoot)
+{
+    if (!Root && !OtherRoot) return true;
+    if (!Root || !OtherRoot) return false;
+
+    bool IdenticalValues = (Root->data == OtherRoot->data);
+    bool IdenticalLeftTree = IdenticalTree(Root->left, OtherRoot->left);
+    bool IdenticalRightTree = IdenticalTree(Root->right, OtherRoot->right);
+
+    return (IdenticalValues && IdenticalLeftTree && IdenticalRightTree);
+}
+
+bool Tree::IsSubtree(Node* Root, Node* SubRoot)
+{
+
+    if (!Root) return false;
+
+    if (IdenticalTree(root, SubRoot)) return true;
+
+    bool Left = IdenticalTree(root->left, SubRoot);
+    bool Right = IdenticalTree(root->right, SubRoot);
+
+    return Left || Right;
 }
 
 

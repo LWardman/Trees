@@ -15,11 +15,9 @@ struct Node {
     Node* right;
 
     Node()
-    {
+    = default;
 
-    }
-
-    Node(int Data)
+    explicit Node(int Data)
     {
         data = Data;
         left = nullptr;
@@ -38,11 +36,9 @@ class Tree {
 
 public:
 
-    Tree();
+    explicit Tree(Node* Root);
 
-    Tree(Node* Root);
-
-    Node* CreateNode(int data);
+    static Node* CreateNode(int data);
 
     void PrintInOrder(Node* Root);
 
@@ -50,9 +46,9 @@ public:
 
     void PrintPostOrder(Node* Root);
 
-    void BreadthFirstSearch(Node* Root);
+    static void BreadthFirstSearch(Node* Root);
 
-    void DepthFirstSearch(Node* Root);
+    static void DepthFirstSearch(Node* Root);
 
     Node* InvertTree(Node* Root);
 
@@ -61,6 +57,10 @@ public:
     int Height(Node* Root, int &Ans);
 
     int DiameterOfTree(Node* Root);
+
+    bool IdenticalTree(Node* Root, Node* OtherRoot);
+
+    bool IsSubtree(Node* Root, Node* SubRoot);
 
     Node* root;
 

@@ -50,9 +50,13 @@ public:
 
     void PrintPostOrder(Node* Root);
 
-    void bfs(Node* Root);
+    void BreadthFirstSearch(Node* Root);
 
-    void dfs(Node* Root);
+    void DepthFirstSearch(Node* Root);
+
+    Node* InvertTree(Node* Root);
+
+    int GetMaxDepth(Node* Root);
 
     Node* root;
 

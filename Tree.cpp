@@ -66,7 +66,7 @@ void Tree::PrintPostOrder(Node* Root)
     std::cout << Root->data << " ";
 }
 
-void Tree::bfs(Node* Root)
+void Tree::BreadthFirstSearch(Node* Root)
 {
     std::deque<Node*> Queue;
     Queue.push_back(Root);
@@ -89,7 +89,7 @@ void Tree::bfs(Node* Root)
     }
 }
 
-void Tree::dfs(Node* Root)
+void Tree::DepthFirstSearch(Node* Root)
 {
     std::deque<Node*> Queue;
     Queue.push_back(Root);
@@ -111,6 +111,27 @@ void Tree::dfs(Node* Root)
         }
 
     }
+}
+
+Node* Tree::InvertTree(Node* Root) {
+    if (root == nullptr) return root;
+
+    Node* placeholder = root->right;
+    root->right = root->left;
+    root->left = placeholder;
+    InvertTree(root->left);
+    InvertTree(root->right);
+
+    return root;
+}
+
+int Tree::GetMaxDepth(Node* Root) {
+    if (root == nullptr) return 0;
+
+    int leftDepth = GetMaxDepth(root->left);
+    int rightDepth = GetMaxDepth(root->right);
+
+    return std::max(leftDepth, rightDepth) + 1;
 }
 
 

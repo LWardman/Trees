@@ -83,13 +83,9 @@ public:
 
     int KthSmallestEntry(Node* Root, int k);
 
+    Node* BuildTree(std::vector<int>& preorder, std::vector<int>& inorder);
+
     Node* root;
-
-
-
 };
-
-
-
 
 #endif //TREES_TREE_H

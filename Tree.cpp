@@ -318,3 +318,42 @@ int Tree::KthSmallestEntry(Node* Root, int k)
 
     return SortedList[k-1];
 }
+
+Node* Tree::BuildTree(std::vector<int>& preorder, std::vector<int>& inorder)
+{
+    if (preorder.empty()) return nullptr;
+
+    Node* Root = new Node(preorder[0]);
+
+    bool FoundValue = false;
+
+    std::vector<int> LInOrder;
+    std::vector<int> RInOrder;
+
+    for (int data : inorder)
+    {
+        if (FoundValue)
+        {
+            RInOrder.push_back(data);
+        }
+        else
+        {
+            if (data == preorder[0])
+            {
+                FoundValue = true;
+                continue;
+            }
+            LInOrder.push_back(data);
+        }
+    }
+
+    preorder.erase(preorder.begin());
+
+    std::vector<int> LPreOrder(preorder.begin(), preorder.begin() + LInOrder.size());
+    std::vector<int> RPreOrder(preorder.end() - RInOrder.size(), preorder.end());
+
+    Root->left = BuildTree(LPreOrder, LInOrder);
+    Root->right = BuildTree(RPreOrder, RInOrder);
+
+    return Root;
+}

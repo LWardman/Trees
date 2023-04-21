@@ -176,5 +176,40 @@ bool Tree::IsSubtree(Node* Root, Node* SubRoot)
     return Left || Right;
 }
 
+std::vector<std::vector<int>> Tree::LevelOrder(Node* Root) {
+    std::vector<std::vector<int>> Ans;
 
+    if (!Root) return Ans;
+
+    std::vector<int> CurrentLevel;
+
+    std::deque<Node*> Queue;
+    Queue.push_back(Root);
+    Queue.push_back(nullptr);
+
+    while (!Queue.empty())
+    {
+        Node* Curr = Queue.front();
+        Queue.pop_front();
+
+        if (Curr == nullptr)
+        {
+            Ans.push_back(CurrentLevel);
+            CurrentLevel.resize(0);
+
+            if (!Queue.empty())
+            {
+                Queue.push_back(nullptr);
+            }
+            continue;
+        }
+
+        CurrentLevel.push_back(Curr->data);
+
+        if (Curr->left) Queue.push_back(Curr->left);
+
+        if (Curr->right) Queue.push_back(Curr->right);
+    }
+    return Ans;
+}
 

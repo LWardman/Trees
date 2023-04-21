@@ -7,6 +7,7 @@
 
 #include <iostream>
 #include <deque>
+#include <vector>
 
 struct Node {
 
@@ -61,6 +62,8 @@ public:
     bool IdenticalTree(Node* Root, Node* OtherRoot);
 
     bool IsSubtree(Node* Root, Node* SubRoot);
+
+    static std::vector<std::vector<int>> LevelOrder(Node* Root);
 
     Node* root;
 

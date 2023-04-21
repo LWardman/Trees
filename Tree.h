@@ -69,16 +69,15 @@ public:
 
     static std::vector<int> LeftSideView(Node* Root);
 
+    void GoodNodesRec(Node* Root, int PathMaximum, int &Total);
+
+    int GoodNodes(Node* Root);
+
     Node* root;
 
 
 
 };
-
-
-
-
-
 
 
 

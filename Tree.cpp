@@ -240,3 +240,27 @@ std::vector<int> Tree::LeftSideView(Node* Root)
     return LeftView;
 }
 
+void Tree::GoodNodesRec(Node* Root, int PathMaximum, int &Total)
+{
+    if(!Root)return;
+
+    if(PathMaximum <= Root->data)
+    {
+        PathMaximum = Root->data;
+        Total++;
+    }
+
+    GoodNodesRec(Root->left, PathMaximum, Total);
+    GoodNodesRec(Root->right, PathMaximum, Total);
+}
+
+int Tree::GoodNodes(Node* Root)
+{
+
+    int Total = 0;
+    int PathMaximum = INT_MIN;
+
+    GoodNodesRec(Root, PathMaximum, Total);
+
+    return Total;
+}

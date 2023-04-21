@@ -65,6 +65,10 @@ public:
 
     static std::vector<std::vector<int>> LevelOrder(Node* Root);
 
+    static std::vector<int> RightSideView(Node* Root);
+
+    static std::vector<int> LeftSideView(Node* Root);
+
     Node* root;
 
 

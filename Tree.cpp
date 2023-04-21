@@ -176,7 +176,8 @@ bool Tree::IsSubtree(Node* Root, Node* SubRoot)
     return Left || Right;
 }
 
-std::vector<std::vector<int>> Tree::LevelOrder(Node* Root) {
+std::vector<std::vector<int>> Tree::LevelOrder(Node* Root)
+{
     std::vector<std::vector<int>> Ans;
 
     if (!Root) return Ans;
@@ -211,5 +212,31 @@ std::vector<std::vector<int>> Tree::LevelOrder(Node* Root) {
         if (Curr->right) Queue.push_back(Curr->right);
     }
     return Ans;
+}
+
+std::vector<int> Tree::RightSideView(Node* Root)
+{
+
+    std::vector<int> RightView;
+
+    for (std::vector<int> vec : LevelOrder(Root))
+    {
+        RightView.push_back(vec.back());
+    }
+
+    return RightView;
+}
+
+std::vector<int> Tree::LeftSideView(Node* Root)
+{
+
+    std::vector<int> LeftView;
+
+    for (std::vector<int> vec : LevelOrder(Root))
+    {
+        LeftView.push_back(vec.front());
+    }
+
+    return LeftView;
 }
 

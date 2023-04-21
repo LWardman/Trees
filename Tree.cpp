@@ -62,6 +62,39 @@ void Tree::PrintPostOrder(Node* Root)
     std::cout << Root->data << " ";
 }
 
+std::vector<int> Tree::GetInOrderArray(Node* Root, std::vector<int> &OutVec)
+{
+    if (!Root) return OutVec;
+
+    GetInOrderArray(Root->left, OutVec);
+    OutVec.push_back(Root->data);
+    GetInOrderArray(Root->right, OutVec);
+
+    return OutVec;
+}
+
+std::vector<int> Tree::GetPreOrderArray(Node* Root, std::vector<int> &OutVec)
+{
+    if (!Root) return OutVec;
+
+    OutVec.push_back(Root->data);
+    GetPreOrderArray(Root->left, OutVec);
+    GetPreOrderArray(Root->right, OutVec);
+
+    return OutVec;
+}
+
+std::vector<int> Tree::GetPostOrderArray(Node* Root, std::vector<int> &OutVec)
+{
+    if (!Root) return OutVec;
+
+    GetPostOrderArray(Root->left, OutVec);
+    GetPostOrderArray(Root->right, OutVec);
+    OutVec.push_back(Root->data);
+
+    return OutVec;
+}
+
 void Tree::BreadthFirstSearch(Node* Root)
 {
     std::deque<Node*> Queue;
@@ -263,4 +296,25 @@ int Tree::GoodNodes(Node* Root)
     GoodNodesRec(Root, PathMaximum, Total);
 
     return Total;
+}
+
+bool Tree::ValidateBST(Node* Root)
+{
+    std::vector<int> InOrderNumbers;
+    GetInOrderArray(Root, InOrderNumbers);
+
+    for(int i = 0; i < InOrderNumbers.size() - 1; i++)
+    {
+        if (InOrderNumbers[i] >= InOrderNumbers[i+1]) return false;
+    }
+
+    return true;
+}
+
+int Tree::KthSmallestEntry(Node* Root, int k)
+{
+    std::vector<int> SortedList;
+    GetInOrderArray(Root, SortedList);
+
+    return SortedList[k-1];
 }

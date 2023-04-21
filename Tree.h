@@ -47,6 +47,12 @@ public:
 
     void PrintPostOrder(Node* Root);
 
+    std::vector<int> GetInOrderArray(Node* Root, std::vector<int> &OutVec);
+
+    std::vector<int> GetPreOrderArray(Node* Root, std::vector<int> &OutVec);
+
+    std::vector<int> GetPostOrderArray(Node* Root, std::vector<int> &OutVec);
+
     static void BreadthFirstSearch(Node* Root);
 
     static void DepthFirstSearch(Node* Root);
@@ -72,6 +78,10 @@ public:
     void GoodNodesRec(Node* Root, int PathMaximum, int &Total);
 
     int GoodNodes(Node* Root);
+
+    bool ValidateBST(Node* Root);
+
+    int KthSmallestEntry(Node* Root, int k);
 
     Node* root;
 

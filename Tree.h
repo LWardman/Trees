@@ -85,6 +85,10 @@ public:
 
     Node* BuildTree(std::vector<int>& preorder, std::vector<int>& inorder);
 
+    int MaxGain(Node* Root, int &MaxSum);
+
+    int MaxPathSum(Node* Root);
+
     Node* root;
 };
 

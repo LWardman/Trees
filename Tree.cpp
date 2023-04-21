@@ -357,3 +357,24 @@ Node* Tree::BuildTree(std::vector<int>& preorder, std::vector<int>& inorder)
 
     return Root;
 }
+
+int Tree::MaxGain(Node* Root, int &MaxSum)
+{
+    if(!Root)return 0;
+
+    int l = std::max(MaxGain(Root->left, MaxSum), 0);
+    int r = std::max(MaxGain(Root->right, MaxSum), 0);
+
+    int NewTotal = Root->data + l + r;
+
+    MaxSum = std::max(MaxSum, NewTotal);
+
+    return Root->data + std::max(l, r);
+}
+
+int Tree::MaxPathSum(Node* Root)
+{
+    int MaxSum = INT_MIN;
+    MaxGain(Root, MaxSum);
+    return MaxSum;
+}

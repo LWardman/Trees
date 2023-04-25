@@ -6,32 +6,13 @@ int main() {
 
     Tree* tree = new Tree(Root);
 
-    // Level 2
-    tree->root->left = tree->CreateNode(2);
-    tree->root->right = tree->CreateNode(3);
+    std::vector<int> PreOrder = {1, 2, 4, 8, 9, 5, 10, 11, 3, 6, 12, 13, 7, 14, 15};
 
-    // Level 3
-    tree->root->left->left = tree->CreateNode(4);
-    tree->root->left->right = tree->CreateNode(5);
-    tree->root->right->left = tree->CreateNode(6);
-    tree->root->right->right = tree->CreateNode(7);
+    std::vector<int> InOrder = {8, 4, 9, 2, 10, 5, 11, 1, 12, 6, 13, 3, 14, 7, 15};
 
-    // Level 4
-    tree->root->left->left->left = tree->CreateNode(8);
-    tree->root->left->left->right = tree->CreateNode(9);
-    tree->root->left->right->left = tree->CreateNode(10);
-    tree->root->left->right->right = tree->CreateNode(11);
-    tree->root->right->left->left = tree->CreateNode(12);
-    tree->root->right->left->right = tree->CreateNode(13);
-    tree->root->right->right->left = tree->CreateNode(14);
-    tree->root->right->right->right = tree->CreateNode(15);
+    tree->root = tree->BuildTree(PreOrder, InOrder);
 
-
-    //bfs(Root);
-
-    //dfs(Root);
-
-    tree->PrintInOrder(Root);
+    Tree::BreadthFirstSearch(tree->root);
 
     return 0;
 }

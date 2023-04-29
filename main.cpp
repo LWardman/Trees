@@ -14,6 +14,7 @@ int main() {
 
     Tree::BreadthFirstSearch(tree->root);
 
+    std::min(5, 3);
 
     return 0;
 }

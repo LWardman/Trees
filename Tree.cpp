@@ -375,6 +375,6 @@ int Tree::MaxGain(Node* Root, int &MaxSum)
 int Tree::MaxPathSum(Node* Root)
 {
     int MaxSum = INT_MIN;
-    MaxGain(Root, MaxSum);
-    return MaxSum;
+
+    return MaxGain(Root, MaxSum);
 }

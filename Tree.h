@@ -41,11 +41,11 @@ public:
 
     static Node* CreateNode(int data);
 
-    void PrintInOrder(Node* Root);
+    static void PrintInOrder(const Node* Root);
 
-    void PrintPreOrder(Node* Root);
+    static void PrintPreOrder(const Node* Root);
 
-    void PrintPostOrder(Node* Root);
+    static void PrintPostOrder(const Node* Root);
 
     std::vector<int> GetInOrderArray(Node* Root, std::vector<int> &OutVec);
 

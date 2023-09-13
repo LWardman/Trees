@@ -12,7 +12,10 @@ int main() {
 
     tree->root = tree->BuildTree(PreOrder, InOrder);
 
-    Tree::BreadthFirstSearch(tree->root);
-
+    Tree::PrintInOrder(tree->root);
+    std::cout << std::endl;
+    Tree::PrintPostOrder(tree->root);
+    std::cout << std::endl;
+    Tree::PrintPreOrder(tree->root);
     return 0;
 }

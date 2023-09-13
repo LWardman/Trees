@@ -20,7 +20,7 @@ Node* Tree::CreateNode(int data)
     return NewNode;
 }
 
-void Tree::PrintInOrder(Node* Root)
+void Tree::PrintInOrder(const Node* Root)
 {
     if (!Root) return;
 
@@ -34,7 +34,7 @@ void Tree::PrintInOrder(Node* Root)
     PrintInOrder(Root->right);
 }
 
-void Tree::PrintPreOrder(Node* Root)
+void Tree::PrintPreOrder(const Node* Root)
 {
     if (!Root) return;
 
@@ -48,7 +48,7 @@ void Tree::PrintPreOrder(Node* Root)
     PrintPreOrder(Root->right);
 }
 
-void Tree::PrintPostOrder(Node* Root)
+void Tree::PrintPostOrder(const Node* Root)
 {
     if (!Root) return;
 

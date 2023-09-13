@@ -11,7 +11,7 @@ Tree::Tree(Node* Root)
     this->root = Root;
 }
 
-Node* Tree::CreateNode(int data)
+Node* Tree::CreateNode(const int data)
 {
     Node* NewNode = new Node();
     NewNode->data = data;
@@ -184,7 +184,7 @@ int Tree::DiameterOfTree(Node* Root)
     return Ans - 1;
 }
 
-bool Tree::IdenticalTree(Node* Root, Node* OtherRoot)
+bool Tree::IdenticalTree(const Node* Root, const Node* OtherRoot)
 {
     if (!Root && !OtherRoot) return true;
     if (!Root || !OtherRoot) return false;
@@ -196,7 +196,7 @@ bool Tree::IdenticalTree(Node* Root, Node* OtherRoot)
     return (IdenticalValues && IdenticalLeftTree && IdenticalRightTree);
 }
 
-bool Tree::IsSubtree(Node* Root, Node* SubRoot)
+bool Tree::IsSubtree(const Node* Root, const Node* SubRoot)
 {
 
     if (!Root) return false;

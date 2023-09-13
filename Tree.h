@@ -40,7 +40,7 @@ public:
 
     explicit Tree(Node* Root);
 
-    static Node* CreateNode(int data);
+    static Node* CreateNode(const int data);
 
     static void PrintInOrder(const Node* Root);
 
@@ -66,9 +66,9 @@ public:
 
     int DiameterOfTree(Node* Root);
 
-    bool IdenticalTree(Node* Root, Node* OtherRoot);
+    bool IdenticalTree(const Node* Root, const Node* OtherRoot);
 
-    bool IsSubtree(Node* Root, Node* SubRoot);
+    bool IsSubtree(const Node* Root, const Node* SubRoot);
 
     static std::vector<std::vector<int>> LevelOrder(Node* Root);
 

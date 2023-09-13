@@ -17,5 +17,6 @@ int main() {
     Tree::PrintPostOrder(tree->root);
     std::cout << std::endl;
     Tree::PrintPreOrder(tree->root);
+
     return 0;
 }
